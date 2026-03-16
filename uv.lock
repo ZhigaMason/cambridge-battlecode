@@ -1,0 +1,100 @@
+version = 1
+revision = 3
+requires-python = ">=3.12"
+
+[[package]]
+name = "cambc"
+version = "1.0.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "click" },
+    { name = "rich" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/19/02/2ae4a620b3b6fc2666a3d65d8aa9412821f32c758124d42a63d7ef64d049/cambc-1.0.2.tar.gz", hash = "sha256:b4a912dfdbbae14706e054d380522b96a5ea091a8720c92feaa8ddad22c5ec50", size = 12169766, upload-time = "2026-03-16T15:23:06.922Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8d/20/bee6d78cb5512b07a23d87215053bbf4ef7e5aa6ee7a1905f1b86f0938ea/cambc-1.0.2-cp312-cp312-macosx_10_12_x86_64.whl", hash = "sha256:34f8d628a0da4607e4abac9285dd5ba73938d85a14f30042da371089bd353e58", size = 12583941, upload-time = "2026-03-16T15:22:43.236Z" },
+    { url = "https://files.pythonhosted.org/packages/49/1e/127e5f830d74547ebb83b96fca840f0a2152bc9db7011f4a78f604d46de9/cambc-1.0.2-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:ca85c9e14e57295021d313343abca5aa4c4ceebf17ecca6d4560e129b39d3c12", size = 12568723, upload-time = "2026-03-16T15:22:46.331Z" },
+    { url = "https://files.pythonhosted.org/packages/9f/d7/17134394b4bbac074bdeb1547335e3e90015c36a070beecdea688d0ff7c4/cambc-1.0.2-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d7fdccd6c07efe097c9b0669a53c42bcf0bcc927bdfb5a4b5014518dc7f151fb", size = 12608742, upload-time = "2026-03-16T15:22:48.638Z" },
+    { url = "https://files.pythonhosted.org/packages/93/d3/ae1a19c514994f2fedf8664ccff87a1c7de2e3c34e165329ed0c5cb3d7c7/cambc-1.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:26b2454c46862cf5b1668171bdd9db4260693c2ff7c829b45f896ac0e3eb9f91", size = 12624613, upload-time = "2026-03-16T15:22:50.767Z" },
+    { url = "https://files.pythonhosted.org/packages/5c/79/b144b52ada12f5366439d9a3aa48526d83e7229b6ec3de9b220c017f0bda/cambc-1.0.2-cp312-cp312-win_amd64.whl", hash = "sha256:e05b34498645c59adff161c0a3d952e294594d5c88a75a98df1bb23cc59b8b54", size = 12475945, upload-time = "2026-03-16T15:22:53.238Z" },
+    { url = "https://files.pythonhosted.org/packages/35/6c/a43d7e3bc7d0b36430e080c84e06eeee1947573e8735adb6e2225fd42040/cambc-1.0.2-cp313-cp313-macosx_10_12_x86_64.whl", hash = "sha256:6c3f2aa72e34e087df3f3f8339547b3b6ddb53276583500ddbf1e47b9b48d100", size = 12583966, upload-time = "2026-03-16T15:22:55.31Z" },
+    { url = "https://files.pythonhosted.org/packages/21/dd/93dcca9e4e758365041065a8cb5c64504a514d9b187cf3b6dc46b2c1d80b/cambc-1.0.2-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:8f6fa0b15dc4a772a4b75c702bf11c9f0d99631c777706b57b89231dd75ccad3", size = 12568914, upload-time = "2026-03-16T15:22:57.827Z" },
+    { url = "https://files.pythonhosted.org/packages/e0/bf/152a551f6e59de8903a2cd6c196049a580accc5e75f405a78ae4fb389b74/cambc-1.0.2-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:25b52b095a743daec3129e38602c3179b126c760461d0fe28dccc78e090942d3", size = 12608174, upload-time = "2026-03-16T15:22:59.816Z" },
+    { url = "https://files.pythonhosted.org/packages/5b/5a/a7e40facab3307f877e63c69af779ba8ccfc0bb6120ff601a9795596c683/cambc-1.0.2-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:153939165edec9ee14ec37ee0d3d43ac40ef5cd22c8ef5ed975f9574950f571f", size = 12624333, upload-time = "2026-03-16T15:23:01.872Z" },
+    { url = "https://files.pythonhosted.org/packages/24/f4/5fcfd7bdbd6bde45d1f5cdc3a3c657149a33918a1fb891f0f166328d42a6/cambc-1.0.2-cp313-cp313-win_amd64.whl", hash = "sha256:5ae996e7331da64d7dd3e2fae80f20e967a6ffbdaedb107c39ca719ba5e44472", size = 12475953, upload-time = "2026-03-16T15:23:04.808Z" },
+]
+
+[[package]]
+name = "click"
+version = "8.3.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "colorama", marker = "sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/3d/fa/656b739db8587d7b5dfa22e22ed02566950fbfbcdc20311993483657a5c0/click-8.3.1.tar.gz", hash = "sha256:12ff4785d337a1bb490bb7e9c2b1ee5da3112e94a8622f26a6c77f5d2fc6842a", size = 295065, upload-time = "2025-11-15T20:45:42.706Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/98/78/01c019cdb5d6498122777c1a43056ebb3ebfeef2076d9d026bfe15583b2b/click-8.3.1-py3-none-any.whl", hash = "sha256:981153a64e25f12d547d3426c367a4857371575ee7ad18df2a6183ab0545b2a6", size = 108274, upload-time = "2025-11-15T20:45:41.139Z" },
+]
+
+[[package]]
+name = "colorama"
+version = "0.4.6"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/d8/53/6f443c9a4a8358a93a6792e2acffb9d9d5cb0a5cfd8802644b7b1c9a02e4/colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44", size = 27697, upload-time = "2022-10-25T02:36:22.414Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6", size = 25335, upload-time = "2022-10-25T02:36:20.889Z" },
+]
+
+[[package]]
+name = "markdown-it-py"
+version = "4.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "mdurl" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/5b/f5/4ec618ed16cc4f8fb3b701563655a69816155e79e24a17b651541804721d/markdown_it_py-4.0.0.tar.gz", hash = "sha256:cb0a2b4aa34f932c007117b194e945bd74e0ec24133ceb5bac59009cda1cb9f3", size = 73070, upload-time = "2025-08-11T12:57:52.854Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/94/54/e7d793b573f298e1c9013b8c4dade17d481164aa517d1d7148619c2cedbf/markdown_it_py-4.0.0-py3-none-any.whl", hash = "sha256:87327c59b172c5011896038353a81343b6754500a08cd7a4973bb48c6d578147", size = 87321, upload-time = "2025-08-11T12:57:51.923Z" },
+]
+
+[[package]]
+name = "mdurl"
+version = "0.1.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec958cb99bd3efefba235e65cdeb9c84d24a8293ba1d90/mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba", size = 8729, upload-time = "2022-08-14T12:40:10.846Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8", size = 9979, upload-time = "2022-08-14T12:40:09.779Z" },
+]
+
+[[package]]
+name = "pygments"
+version = "2.19.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz", hash = "sha256:636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887", size = 4968631, upload-time = "2025-06-21T13:39:12.283Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c7/21/705964c7812476f378728bdf590ca4b771ec72385c533964653c68e86bdc/pygments-2.19.2-py3-none-any.whl", hash = "sha256:86540386c03d588bb81d44bc3928634ff26449851e99741617ecb9037ee5ec0b", size = 1225217, upload-time = "2025-06-21T13:39:07.939Z" },
+]
+
+[[package]]
+name = "rich"
+version = "14.3.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "markdown-it-py" },
+    { name = "pygments" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b3/c6/f3b320c27991c46f43ee9d856302c70dc2d0fb2dba4842ff739d5f46b393/rich-14.3.3.tar.gz", hash = "sha256:b8daa0b9e4eef54dd8cf7c86c03713f53241884e814f4e2f5fb342fe520f639b", size = 230582, upload-time = "2026-02-19T17:23:12.474Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/14/25/b208c5683343959b670dc001595f2f3737e051da617f66c31f7c4fa93abc/rich-14.3.3-py3-none-any.whl", hash = "sha256:793431c1f8619afa7d3b52b2cdec859562b950ea0d4b6b505397612db8d5362d", size = 310458, upload-time = "2026-02-19T17:23:13.732Z" },
+]
+
+[[package]]
+name = "tmp"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "cambc" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "cambc" }]
