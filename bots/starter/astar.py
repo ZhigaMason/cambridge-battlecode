@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import heapq
 
-from cambc import Controller, Direction, Position
+from cambc import Controller, Direction
 
 
 # 8 non-centre directions
