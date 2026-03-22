@@ -4,14 +4,11 @@ from __future__ import annotations
 
 import heapq
 
-from cambc import Controller, Direction, Position
+from cambc import Controller, Direction
 
 
 # 8 non-centre directions
 DIRECTIONS = [d for d in Direction if d != Direction.CENTRE]
-
-# Delta-to-Direction lookup
-_DELTA_TO_DIR: dict[tuple[int, int], Direction] = {d.delta(): d for d in DIRECTIONS}
 
 INF = float("inf")
 
@@ -136,6 +133,8 @@ class DStarLitePathfinder:
                 break
 
             u, k_old = self._pop()
+            if k_old == (INF, INF):
+                break  # queue exhausted, no path
             k_new = self._calculate_key(u)
 
             if k_old < k_new:
