@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import heapq
 
-from cambc import Controller, Direction
+from cambc import Controller, Direction, Environment
 
 
 # 8 non-centre directions
@@ -79,10 +79,10 @@ class DStarLitePathfinder:
         return result
 
     def _cost(self, a: tuple[int, int], b: tuple[int, int]) -> float:
-        # Cost is 1 if b is known passable, infinite otherwise
-        if self.known_tiles.get(b) is True:
-            return 1.0
-        return INF
+        # Cost is INF only if b is known impassable; unknown tiles are optimistically traversable
+        if self.known_tiles.get(b) is False:
+            return INF
+        return 1.0
 
     def _update_vertex(self, u: tuple[int, int]) -> None:
         if u not in self.goal_nodes:
@@ -166,7 +166,9 @@ class DStarLitePathfinder:
         changed: list[tuple[int, int]] = []
         for tile_pos in ct.get_nearby_tiles():
             key = (tile_pos.x, tile_pos.y)
-            new_passable = ct.is_tile_passable(tile_pos)
+            new_passable = ct.is_tile_passable(tile_pos) or (
+                ct.get_tile_env(tile_pos) == Environment.EMPTY and ct.is_tile_empty(tile_pos)
+            )
             old_passable = self.known_tiles.get(key)
             if old_passable != new_passable:
                 changed.append(key)

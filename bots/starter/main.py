@@ -19,14 +19,12 @@ USE_DSTAR_LITE = True
 DIRECTIONS = [d for d in Direction if d != Direction.CENTRE]
 
 
-def _infer_enemy_core(
-    core_pos: Position, map_w: int, map_h: int
-) -> tuple[int, int]:
+def _infer_enemy_core(core_pos: Position, map_w: int, map_h: int) -> tuple[int, int]:
     """Infer the enemy core position using map symmetry."""
     cx, cy = core_pos.x, core_pos.y
     candidates = [
-        (cx, map_h - 1 - cy),          # horizontal
-        (map_w - 1 - cx, cy),          # vertical
+        (cx, map_h - 1 - cy),  # horizontal
+        (map_w - 1 - cx, cy),  # vertical
         (map_w - 1 - cx, map_h - 1 - cy),  # rotational
     ]
 
@@ -70,11 +68,10 @@ class Player:
             self._run_builder(ct)
 
     def _run_core(self, ct: Controller) -> None:
-        if self.num_spawned < 3:
-            spawn_pos = ct.get_position().add(random.choice(DIRECTIONS))
-            if ct.can_spawn(spawn_pos):
-                ct.spawn_builder(spawn_pos)
-                self.num_spawned += 1
+        spawn_pos = ct.get_position().add(random.choice(DIRECTIONS))
+        if ct.can_spawn(spawn_pos):
+            ct.spawn_builder(spawn_pos)
+            self.num_spawned += 1
 
     def _run_builder(self, ct: Controller) -> None:
         pos = ct.get_position()
@@ -97,17 +94,34 @@ class Player:
         # Update grid with visible tiles
         self.pathfinder.update_grid(ct)
 
-        # Check arrival: adjacent to enemy core -> self-destruct
-        if pos.distance_squared(Position(*self.enemy_core)) <= 2:
-            ct.self_destruct()
-            return
+        # Check arrival: scan for actual enemy core nearby and self-destruct if adjacent
+        for eid in ct.get_nearby_entities():
+            try:
+                if ct.get_entity_type(eid) == EntityType.CORE and ct.get_team(eid) != ct.get_team():
+                    enemy_pos = ct.get_position(eid)
+                    if pos.distance_squared(enemy_pos) <= 2:
+                        ct.self_destruct()
+                        return
+            except Exception:
+                continue
 
         # Get next move from pathfinder
         start = (pos.x, pos.y)
         direction = self.pathfinder.get_next_direction(start)
         if direction is None:
-            return  # no path, skip turn
-
+            # Can't get closer — if enemy core is visible, self-destruct here
+            for eid in ct.get_nearby_entities():
+                try:
+                    if ct.get_entity_type(eid) == EntityType.CORE and ct.get_team(eid) != ct.get_team():
+                        ct.self_destruct()
+                        return
+                except Exception:
+                    continue
+            return  # no path and no enemy core in sight, skip turn
         # Move
+        # Build road if needed, then move
+        move_pos = pos.add(direction)
+        if ct.can_build_road(move_pos):
+            ct.build_road(move_pos)
         if ct.can_move(direction):
             ct.move(direction)

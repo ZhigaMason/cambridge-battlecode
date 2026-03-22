@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import heapq
 
-from cambc import Controller, Direction
+from cambc import Controller, Direction, Environment
 
 
 # 8 non-centre directions
@@ -36,7 +36,7 @@ class AStarPathfinder:
         for d in DIRECTIONS:
             dx, dy = d.delta()
             nx, ny = x + dx, y + dy
-            if self._in_bounds(nx, ny) and self.known_tiles.get((nx, ny)) is True:
+            if self._in_bounds(nx, ny) and self.known_tiles.get((nx, ny)) is not False:
                 result.append((nx, ny))
         return result
 
@@ -55,7 +55,10 @@ class AStarPathfinder:
 
     def update_grid(self, ct: Controller) -> None:
         for pos in ct.get_nearby_tiles():
-            self.known_tiles[(pos.x, pos.y)] = ct.is_tile_passable(pos)
+            passable = ct.is_tile_passable(pos) or (
+                ct.get_tile_env(pos) == Environment.EMPTY and ct.is_tile_empty(pos)
+            )
+            self.known_tiles[(pos.x, pos.y)] = passable
 
     def get_next_direction(self, start: tuple[int, int]) -> Direction | None:
         if self._is_goal(start):
